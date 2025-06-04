@@ -8,8 +8,8 @@ namespace TravelJournal.Commands;
 
 public class FindTripByCountryCommand : ICommand
 {
-    private readonly TripRepository tripRepository;
-    public FindTripByCountryCommand(TripRepository service) => tripRepository = service;
+    private readonly TripRepository _tripRepository;
+    public FindTripByCountryCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
     {
@@ -37,10 +37,12 @@ public class FindTripByCountryCommand : ICommand
             }
             if (trip.Locations.Any())
             {
-                Console.Write($"\tTrip Path: ");
-                foreach (Location location in trip.Locations)
+                Console.Write($"\tTrip Path:");
+                for (int i = 0; i < trip.Locations.Count; i++)
                 {
-                    Console.Write($" => [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
+                    Location location = trip.Locations[i];
+                    if (i > 0) Console.Write("=>");
+                    Console.Write($" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
                 }
                 Console.WriteLine();
             }
@@ -49,7 +51,7 @@ public class FindTripByCountryCommand : ICommand
 
     public List<Trip> FindTripsByCountry(string country)
     {
-        return tripRepository.FindByCountry(country);
+        return _tripRepository.FindByCountry(country);
     }
 
 

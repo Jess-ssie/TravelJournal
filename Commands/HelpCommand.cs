@@ -17,6 +17,7 @@ namespace TravelJournal.Commands
             { "update-trip-location", "update-trip-location <locationId> <tripId> <country> <city> <visitDate:yyyy-MM-dd> => Оновлення Локації" },
             { "find-trip", "find-trip <tripId or title> => Знайти подорож за ID" },
             { "find-trips-by-country", "find-trip-by-country <country> => Знайти подорожі за країною" },
+            { "find-location", "find-location <locationId> => Знайти локацію по ID"},
             { "find-locations-by-country-city", "find-locations-by-country-city <country> <city> => Пошук Локації по країні та місті"},
             { "remove-trip", "remove-trip <tripId> => Видалити подорож по ID"},
             { "remove-location" , "remove-location <locationId> => Видалити Локацію по ID"},

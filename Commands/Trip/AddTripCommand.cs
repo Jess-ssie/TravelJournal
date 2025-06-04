@@ -6,8 +6,8 @@ namespace TravelJournal.Commands;
 
 public class AddTripCommand : ICommand
 {
-    private readonly TripRepository tripRepository;
-    public AddTripCommand(TripRepository service) => tripRepository = service;
+    private readonly TripRepository _tripRepository;
+    public AddTripCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
     {
@@ -50,6 +50,6 @@ public class AddTripCommand : ICommand
     public void AddTrip(string title, DateTime start, DateTime finish, TripState state)
     {
         Trip trip = new Trip { Title = title, TripStart = start, TripFinish = finish, State = state };
-        tripRepository.Insert(trip);
+        _tripRepository.Insert(trip);
     }
 }

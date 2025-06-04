@@ -12,6 +12,7 @@ public class TripNoteRepository : DataRepository<TripNote>
     private readonly string _filePath = "Data/trip-notes.json";
     private List<TripNote> _notes;
 
+    private TripRepository _tripRepository;
 
     public TripNoteRepository()
     {
@@ -30,6 +31,11 @@ public class TripNoteRepository : DataRepository<TripNote>
     {
         string json = JsonSerializer.Serialize(_notes, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(_filePath, json);
+    }
+
+    public void SetTripRepository(TripRepository tripRepository)
+    {
+        _tripRepository = tripRepository;
     }
 
     public override TripNote FindById(int id)
@@ -51,7 +57,11 @@ public class TripNoteRepository : DataRepository<TripNote>
 
     public override void Insert(TripNote item)
     {
-        // обробка якщо tripId не існує
+        Trip trip = _tripRepository.FindById(item.TripId);
+        if (trip == null)
+        {
+            return;
+        }
         item.Id = _notes.Count == 0 ? 1 : _notes.Max(n => n.Id) + 1;
         _notes.Add(item);
         SaveChanges();
@@ -68,7 +78,7 @@ public class TripNoteRepository : DataRepository<TripNote>
             Console.WriteLine($"[SUCCESS] Note updated.");
             return;
         }
-        Console.WriteLine($"[ERROR] Note with ID:{item.Id} not found.");
+        Console.WriteLine($"[ERROR] Note with ID \"{item.Id}\" not found.");
     }
 
     public override void Delete(int itemId)
@@ -81,7 +91,7 @@ public class TripNoteRepository : DataRepository<TripNote>
             Console.WriteLine($"[SUCCESS] Note deleted.");
             return;
         }
-        Console.WriteLine($"[ERROR] Note with ID:{itemId} not found.");
+        Console.WriteLine($"[ERROR] Note with ID \"{itemId}\" not found.");
     }
 
     public void DeleteAllByTripId(int tripId)
@@ -94,6 +104,6 @@ public class TripNoteRepository : DataRepository<TripNote>
         int countAfter = _notes.Count;
         int deletedCount = countBefore - countAfter;
 
-        Console.WriteLine($"[SUCCESS] Deleted {deletedCount} note(s) related to Trip ID: {tripId}.");
+        Console.WriteLine($"[SUCCESS] Deleted {deletedCount} note(s) related to Trip ID \"{tripId}\".");
     }
 }

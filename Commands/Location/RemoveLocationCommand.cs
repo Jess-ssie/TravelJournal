@@ -8,8 +8,8 @@ namespace TravelJournal.Commands;
 
 public class RemoveLocationCommand : ICommand
 {
-    private readonly LocationRepository locationRepository;
-    public RemoveLocationCommand(LocationRepository service) => locationRepository = service;
+    private readonly LocationRepository _locationRepository;
+    public RemoveLocationCommand(LocationRepository service) => _locationRepository = service;
 
     public void Execute(string[] args)
     {
@@ -33,6 +33,6 @@ public class RemoveLocationCommand : ICommand
 
     public void RemoveTrip(int id)
     {
-        locationRepository.Delete(id);
+        _locationRepository.Delete(id);
     }
 }

@@ -46,7 +46,7 @@ public class LocationRepository : DataRepository<Location>
         Location location = _locations.FirstOrDefault(l => l.Id == id);
         if (location == null)
         {
-            Console.WriteLine($"[ERROR] Trip with ID:{id} not found.");
+            Console.WriteLine($"[ERROR] Trip with ID \"{id}\" not found.");
             return location;
         }
         return location;
@@ -91,7 +91,7 @@ public class LocationRepository : DataRepository<Location>
             Console.WriteLine($"[SUCCESS] Location updated.");
             return;
         }
-        Console.WriteLine($"[ERROR] Location with ID:{item.Id} not found.");
+        Console.WriteLine($"[ERROR] Location with ID \"{item.Id}\" not found.");
     }
 
     public override void Delete(int itemId)
@@ -104,7 +104,7 @@ public class LocationRepository : DataRepository<Location>
             Console.WriteLine($"[SUCCESS] Location deleted.");
             return;
         }
-        Console.WriteLine($"[ERROR] Location with ID:{itemId} not found.");
+        Console.WriteLine($"[ERROR] Location with ID \"{itemId}\" not found.");
     }
 
     public List<int> FindAllByCountry(string country)

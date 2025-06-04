@@ -7,8 +7,8 @@ namespace TravelJournal.Commands;
 
 public class UpdateTripLocationCommand : ICommand
 {
-    private readonly LocationRepository locationRepository;
-    public UpdateTripLocationCommand(LocationRepository service) => locationRepository = service;
+    private readonly LocationRepository _locationRepository;
+    public UpdateTripLocationCommand(LocationRepository service) => _locationRepository = service;
 
     public void Execute(string[] args)
     {
@@ -41,6 +41,6 @@ public class UpdateTripLocationCommand : ICommand
 
     public void UpdateTripLocation(int locationId, int tripId, string country, string city, DateTime date)
     {
-        locationRepository.Update(new Location { Id = locationId, TripId = tripId, Country = country, City = city, VisitDate = date });
+        _locationRepository.Update(new Location { Id = locationId, TripId = tripId, Country = country, City = city, VisitDate = date });
     }
 }

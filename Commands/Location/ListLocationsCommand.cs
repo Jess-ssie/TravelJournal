@@ -9,8 +9,8 @@ namespace TravelJournal.Commands;
 
 public class ListLocationsCommand : ICommand
 {
-    private readonly LocationRepository locationRepository;
-    public ListLocationsCommand(LocationRepository service) => locationRepository = service;
+    private readonly LocationRepository _locationRepository;
+    public ListLocationsCommand(LocationRepository service) => _locationRepository = service;
 
     public void Execute(string[] args)
     {
@@ -49,7 +49,7 @@ public class ListLocationsCommand : ICommand
 
     public List<Location> GetAllLocations()
     {
-        return locationRepository.FindAll();
+        return _locationRepository.FindAll();
     }
 
 }

@@ -9,11 +9,11 @@ namespace TravelJournal.Commands;
 
 public class ListTripsCommand : ICommand
 {
-    private readonly TripRepository tripRepository;
+    private readonly TripRepository _tripRepository;
 
-    public ListTripsCommand(TripRepository tripRepositoryCons)
+    public ListTripsCommand(TripRepository service)
     {
-        tripRepository = tripRepositoryCons;
+        _tripRepository = service;
     }
 
     public void Execute(string[] args)
@@ -43,9 +43,11 @@ public class ListTripsCommand : ICommand
             if (trip.Locations.Any())
             {
                 Console.Write($"\tTrip Path: ");
-                foreach (Location location in trip.Locations)
+                for (int i = 0; i < trip.Locations.Count; i++)
                 {
-                    Console.Write($" => [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
+                    Location location = trip.Locations[i];
+                    if (i > 0) Console.Write("=>");
+                    Console.Write($" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
                 }
                 Console.WriteLine();
             }
@@ -53,12 +55,12 @@ public class ListTripsCommand : ICommand
     }
     public List<Trip> GetAllTrips()
     {
-        return tripRepository.FindAll();
+        return _tripRepository.FindAll();
     }
 
     public List<Trip> GetAllTripsDetail()
     {
-        return tripRepository.FindAllDetail();
+        return _tripRepository.FindAllDetail();
     }
 
 }

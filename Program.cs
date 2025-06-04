@@ -14,6 +14,7 @@ class Program
         LocationRepository locationRepository = new LocationRepository();
         TripRepository tripRepository = new TripRepository(noteRepository, locationRepository);
         locationRepository.SetTripRepository(tripRepository);
+        noteRepository.SetTripRepository(tripRepository);
         CommandManager commandManager = new CommandManager();
 
 
@@ -28,6 +29,7 @@ class Program
             { "update-trip-location", new UpdateTripLocationCommand(locationRepository)},
             { "find-trip", new FindTripCommand(tripRepository) },
             { "find-trip-by-country", new FindTripByCountryCommand(tripRepository) },
+            { "find-location", new FindLocationCommand(locationRepository)},
             { "find-locations-by-country-city", new FindLocationByCountryAndCity(locationRepository)},
             { "remove-trip", new RemoveTripCommand(tripRepository)},
             { "remove-location", new RemoveLocationCommand(locationRepository)},

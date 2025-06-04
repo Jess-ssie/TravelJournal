@@ -7,8 +7,8 @@ namespace TravelJournal.Commands;
 
 public class RemoveTripCommand : ICommand
 {
-    private readonly TripRepository tripRepository;
-    public RemoveTripCommand(TripRepository service) => tripRepository = service;
+    private readonly TripRepository _tripRepository;
+    public RemoveTripCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
     {
@@ -32,6 +32,6 @@ public class RemoveTripCommand : ICommand
 
     public void RemoveTrip(int id)
     {
-        tripRepository.Delete(id);
+        _tripRepository.Delete(id);
     }
 }

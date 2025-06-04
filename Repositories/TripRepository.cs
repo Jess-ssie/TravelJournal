@@ -111,7 +111,7 @@ public class TripRepository : DataRepository<Trip>
             Console.WriteLine($"[SUCCESS] Trip updated.");
             return;
         }
-        Console.WriteLine($"[ERROR] Trip with ID:{item.Id} not found.");
+        Console.WriteLine($"[ERROR] Trip with ID \"{item.Id}\" not found.");
 
     }
 
@@ -127,7 +127,7 @@ public class TripRepository : DataRepository<Trip>
             Console.WriteLine($"[SUCCESS] Trip deleted.");
             return;
         }
-        Console.WriteLine($"[ERROR] Trip with ID:{itemId} not found.");
+        Console.WriteLine($"[ERROR] Trip with ID \"{itemId}\" not found.");
 
     }
 

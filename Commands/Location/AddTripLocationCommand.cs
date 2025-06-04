@@ -9,8 +9,8 @@ namespace TravelJournal.Commands;
 
 public class AddTripLocationCommand : ICommand
 {
-    private readonly LocationRepository locationRepository;
-    public AddTripLocationCommand(LocationRepository service) => locationRepository = service;
+    private readonly LocationRepository _locationRepository;
+    public AddTripLocationCommand(LocationRepository service) => _locationRepository = service;
 
     public void Execute(string[] args)
     {
@@ -39,6 +39,6 @@ public class AddTripLocationCommand : ICommand
 
     public void AddTripLocation(int tripId, string country, string city, DateTime date)
     {
-        locationRepository.Insert(new Location { TripId = tripId, Country = country, City = city, VisitDate = date });
+        _locationRepository.Insert(new Location { TripId = tripId, Country = country, City = city, VisitDate = date });
     }
 }

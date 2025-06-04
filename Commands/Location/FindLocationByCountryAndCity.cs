@@ -9,8 +9,8 @@ namespace TravelJournal.Commands;
 
 public class FindLocationByCountryAndCity : ICommand
 {
-    private readonly LocationRepository locationRepository;
-    public FindLocationByCountryAndCity(LocationRepository service) => locationRepository = service;
+    private readonly LocationRepository _locationRepository;
+    public FindLocationByCountryAndCity(LocationRepository service) => _locationRepository = service;
 
     public void Execute(string[] args)
     {
@@ -56,7 +56,7 @@ public class FindLocationByCountryAndCity : ICommand
     }
     public List<Location> GetAllLocationsByCountryAndCity(string country, string city)
     {
-        return locationRepository.FindAllByCountryAndCity(country, city);
+        return _locationRepository.FindAllByCountryAndCity(country, city);
     }
 
 }

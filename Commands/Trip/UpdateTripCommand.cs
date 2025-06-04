@@ -8,8 +8,8 @@ namespace TravelJournal.Commands;
 
 public class UpdateTripCommand : ICommand
 {
-    private readonly TripRepository tripRepository;
-    public UpdateTripCommand(TripRepository service) => tripRepository = service;
+    private readonly TripRepository _tripRepository;
+    public UpdateTripCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
     {
@@ -53,6 +53,6 @@ public class UpdateTripCommand : ICommand
     public void UpdateTrip(int id, string title, DateTime start, DateTime finish, TripState state)
     {
         Trip trip = new Trip { Id = id, Title = title, TripStart = start, TripFinish = finish, State = state };
-        tripRepository.Update(trip);
+        _tripRepository.Update(trip);
     }
 }

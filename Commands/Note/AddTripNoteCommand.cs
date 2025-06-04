@@ -8,8 +8,8 @@ namespace TravelJournal.Commands;
 
 public class AddTripNoteCommand : ICommand
 {
-    public readonly TripNoteRepository noteRepository;
-    public AddTripNoteCommand(TripNoteRepository service) => noteRepository = service;
+    public readonly TripNoteRepository _noteRepository;
+    public AddTripNoteCommand(TripNoteRepository service) => _noteRepository = service;
 
     public void Execute(string[] args)
     {
@@ -38,6 +38,6 @@ public class AddTripNoteCommand : ICommand
 
     public void AddTripNote(int tripId, string note)
     {
-        noteRepository.Insert(new TripNote { TripId = tripId, Note = note });
+        _noteRepository.Insert(new TripNote { TripId = tripId, Note = note });
     }
 }

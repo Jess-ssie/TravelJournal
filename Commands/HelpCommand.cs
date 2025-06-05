@@ -13,6 +13,7 @@ namespace TravelJournal.Commands
             { "add-trip-location", "add-trip-location <tripId> <country> <city> <visitDate:yyyy-MM-dd> => Додати локацію до подорожі" },
             { "list-trips", "list-trips --details => Показати всі подорожі, --detail додає інформацію про нотатки та локації" },
             { "list-locations", "list-locations => Показати всі локації"},
+            { "list-locations-sort", "list-locations-sort <sort> {sort = DateUp(спочатку старіші) | DateDown(спочатку новіші)} => Показати всі локації із сортуванням по VisitDate"},
             { "update-trip", "update-trip <tripId> <title> <start:yyyy-MM-dd> <finish:yyyy-MM-dd> <state> {state = \"Planned\" | \"InProgress\" | \"Finished\" } => Оновити існуючі подорож"},
             { "update-trip-location", "update-trip-location <locationId> <tripId> <country> <city> <visitDate:yyyy-MM-dd> => Оновлення Локації" },
             { "find-trip", "find-trip <tripId or title> => Знайти подорож за ID" },

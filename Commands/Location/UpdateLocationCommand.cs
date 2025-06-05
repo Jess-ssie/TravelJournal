@@ -2,6 +2,7 @@ using System;
 using TravelJournal.Models;
 using TravelJournal.Repositories;
 using TravelJournal.Services;
+using TravelJournal.Validate;
 
 namespace TravelJournal.Commands;
 
@@ -22,7 +23,11 @@ public class UpdateTripLocationCommand : ICommand
         int locationId = 0;
         int tripId = 0;
         DateTime date = DateTime.Now;
-
+        bool isOk = ValidateDate.IsValidDateFormat(args[4]);
+        if (!isOk)
+        {
+            return;
+        }
         try
         {
             locationId = int.Parse(args[0]);

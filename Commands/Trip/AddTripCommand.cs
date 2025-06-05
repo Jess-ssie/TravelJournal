@@ -1,6 +1,7 @@
 using TravelJournal.Models;
 using System;
 using TravelJournal.Repositories;
+using TravelJournal.Validate;
 
 namespace TravelJournal.Commands;
 
@@ -21,12 +22,22 @@ public class AddTripCommand : ICommand
         DateTime start = DateTime.Now;
         DateTime finish = DateTime.Now;
         TripState state = TripState.Planned;
+        bool isOkStart = ValidateDate.IsValidDateFormat(args[1]);
+        if (!isOkStart)
+        {
+            return;
+        }
+        bool isOkFinish = ValidateDate.IsValidDateFormat(args[2]);
+        if (!isOkFinish)
+        {
+            return;
+        }
         try
         {
             title = args[0];
             start = DateTime.Parse(args[1]);
             finish = DateTime.Parse(args[2]);
-            state = Enum.Parse<TripState>(args[3], true);
+            state = Enum.Parse<TripState>(args[3], ignoreCase: true);
         }
         catch (FormatException ex)
         {

@@ -3,6 +3,7 @@ using TravelJournal.Models;
 using TravelJournal.Repositories;
 using TravelJournal.Services;
 using System.Data.Common;
+using TravelJournal.Validate;
 
 
 namespace TravelJournal.Commands;
@@ -23,6 +24,11 @@ public class AddTripLocationCommand : ICommand
         string country = args[1];
         string city = args[2];
         DateTime date = DateTime.Now;
+        bool isOk = ValidateDate.IsValidDateFormat(args[3]);
+        if (!isOk)
+        {
+            return;
+        }
         try
         {
             tripId = int.Parse(args[0]);

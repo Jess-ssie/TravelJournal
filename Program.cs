@@ -25,6 +25,7 @@ class Program
             { "add-trip-location", new AddTripLocationCommand(locationRepository) },
             { "list-trips", new ListTripsCommand(tripRepository) },
             { "list-locations", new ListLocationsCommand(locationRepository) },
+            { "list-locations-sort", new ListLocationsSortCommand(locationRepository)},
             { "update-trip", new UpdateTripCommand(tripRepository)},
             { "update-trip-location", new UpdateTripLocationCommand(locationRepository)},
             { "find-trip", new FindTripCommand(tripRepository) },

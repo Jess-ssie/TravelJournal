@@ -4,6 +4,7 @@ using System.IO;
 using System.Text.Json;
 using TravelJournal.Models;
 using System.Linq;
+using TravelJournal.Enums;
 
 namespace TravelJournal.Repositories;
 
@@ -65,6 +66,21 @@ public class LocationRepository : DataRepository<Location>
     public override List<Location> FindAll()
     {
         return _locations.ToList();
+    }
+
+    public List<Location> FindAllSort(DateSort sort)
+    {
+        switch (sort)
+        {
+            case DateSort.DateUp:
+                return _locations.OrderBy(loc => loc.VisitDate).ToList(); // спочатку старіші
+
+            case DateSort.DateDown:
+                return _locations.OrderByDescending(loc => loc.VisitDate).ToList(); // спочатку новіші
+
+            default:
+                return _locations.ToList(); // без сортування
+        }
     }
 
     public override void Insert(Location item)

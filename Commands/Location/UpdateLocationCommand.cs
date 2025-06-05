@@ -1,7 +1,6 @@
 using System;
 using TravelJournal.Models;
 using TravelJournal.Repositories;
-using TravelJournal.Services;
 using TravelJournal.Validate;
 
 namespace TravelJournal.Commands;

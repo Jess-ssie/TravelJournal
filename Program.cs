@@ -17,7 +17,6 @@ class Program
         noteRepository.SetTripRepository(tripRepository);
         CommandManager commandManager = new CommandManager();
 
-
         Dictionary<string, ICommand> commands = new Dictionary<string, ICommand>
         {
             { "add-trip", new AddTripCommand(tripRepository) },

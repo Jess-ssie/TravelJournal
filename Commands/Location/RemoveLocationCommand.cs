@@ -1,8 +1,5 @@
-using TravelJournal.Services;
-using TravelJournal.Models;
 using System;
 using TravelJournal.Repositories;
-using System.Data.Common;
 
 namespace TravelJournal.Commands;
 

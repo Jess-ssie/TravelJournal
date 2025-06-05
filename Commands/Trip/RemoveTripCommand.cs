@@ -1,5 +1,3 @@
-using TravelJournal.Services;
-using TravelJournal.Models;
 using System;
 using TravelJournal.Repositories;
 

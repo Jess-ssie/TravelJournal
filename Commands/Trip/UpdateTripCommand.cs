@@ -1,8 +1,6 @@
-using TravelJournal.Services;
 using TravelJournal.Models;
 using System;
 using TravelJournal.Repositories;
-using System.Data.Common;
 using TravelJournal.Validate;
 
 namespace TravelJournal.Commands;
@@ -24,12 +22,12 @@ public class UpdateTripCommand : ICommand
         DateTime start = DateTime.Now;
         DateTime finish = DateTime.Now;
         TripState state = TripState.Planned;
-        bool isOkStart = ValidateDate.IsValidDateFormat(args[1]);
+        bool isOkStart = ValidateDate.IsValidDateFormat(args[2]);
         if (!isOkStart)
         {
             return;
         }
-        bool isOkFinish = ValidateDate.IsValidDateFormat(args[2]);
+        bool isOkFinish = ValidateDate.IsValidDateFormat(args[3]);
         if (!isOkFinish)
         {
             return;

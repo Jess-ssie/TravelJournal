@@ -2,7 +2,6 @@ using System;
 using System.Linq;
 using TravelJournal.Models;
 using TravelJournal.Repositories;
-using TravelJournal.Services;
 
 namespace TravelJournal.Commands;
 

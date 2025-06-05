@@ -1,8 +1,6 @@
 using System;
 using TravelJournal.Models;
 using TravelJournal.Repositories;
-using TravelJournal.Services;
-using System.Data.Common;
 using TravelJournal.Validate;
 
 

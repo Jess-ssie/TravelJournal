@@ -73,10 +73,10 @@ public class LocationRepository : DataRepository<Location>
         switch (sort)
         {
             case DateSort.DateUp:
-                return _locations.OrderBy(loc => loc.VisitDate).ToList(); // спочатку старіші
+                return _locations.OrderBy(location => location.VisitDate).ToList(); // спочатку старіші
 
             case DateSort.DateDown:
-                return _locations.OrderByDescending(loc => loc.VisitDate).ToList(); // спочатку новіші
+                return _locations.OrderByDescending(location => location.VisitDate).ToList(); // спочатку новіші
 
             default:
                 return _locations.ToList(); // без сортування

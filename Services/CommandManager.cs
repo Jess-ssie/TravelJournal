@@ -23,7 +23,8 @@ namespace TravelJournal.Services
             {
                 History history = new History
                 {
-                    StartTime = DateTime.Now,
+
+                    StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
                     Command = input
                 };
                 _commandHistory.Add(history);

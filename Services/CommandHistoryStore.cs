@@ -12,7 +12,7 @@ public class CommandHistoryStore
 
     public void Save(List<History> history)
     {
-        string json = JsonSerializer.Serialize(history);
+        string json = JsonSerializer.Serialize(history, new JsonSerializerOptions { WriteIndented = true });
         File.WriteAllText(_filePath, json);
     }
 

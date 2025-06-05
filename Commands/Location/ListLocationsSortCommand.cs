@@ -17,13 +17,13 @@ public class ListLocationsSortCommand : ICommand
     {
         if (args.Length < 1)
         {
-            Console.WriteLine("Usage: list-locations-sort <sort> {sort = dateUp | dateDown}");
+            Console.WriteLine("Usage: list-locations-sort <sort> {sort = DateUp | DateDown}");
             return;
         }
         DateSort sort = DateSort.DateDown;
         try
         {
-            sort = Enum.Parse<DateSort>(args[0], ignoreCase: true);
+            sort = Enum.Parse<DateSort>(args[0], ignoreCase: true); 
         }
         catch (ArgumentException ex)
         {

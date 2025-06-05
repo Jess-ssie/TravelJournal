@@ -22,7 +22,6 @@ namespace TravelJournal.Services
             {
                 History history = new History
                 {
-
                     StartTime = DateTime.Now.ToString("yyyy-MM-dd HH:mm"),
                     Command = input
                 };
@@ -31,7 +30,10 @@ namespace TravelJournal.Services
             }
         }
 
-        public List<History> GetHistory() => _commandHistory.ToList();
+        public List<History> GetHistory()
+        {
+            return _commandHistory.ToList();
+        }
 
         public void ClearHistory()
         {

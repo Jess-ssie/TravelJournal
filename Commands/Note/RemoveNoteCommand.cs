@@ -1,7 +1,7 @@
 using System;
 using TravelJournal.Repositories;
 
-namespace TravelJournal.Commands.Note;
+namespace TravelJournal.Commands;
 
 public class RemoveNoteCommand : ICommand
 {

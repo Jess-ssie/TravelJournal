@@ -56,10 +56,10 @@ public class LocationRepository : DataRepository<Location>
     public List<Location> FindAllByCountryAndCity(string country, string city)
     {
         return _locations
-              .Where(l =>
-                  string.Equals(l.Country, country, StringComparison.OrdinalIgnoreCase) &&
-                  string.Equals(l.City, city, StringComparison.OrdinalIgnoreCase))
-              .ToList();
+            .Where(l =>
+                string.Equals(l.Country, country, StringComparison.OrdinalIgnoreCase) &&
+                string.Equals(l.City, city, StringComparison.OrdinalIgnoreCase))
+                .ToList();
 
     }
 

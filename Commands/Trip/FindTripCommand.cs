@@ -8,6 +8,7 @@ namespace TravelJournal.Commands;
 public class FindTripCommand : ICommand
 {
     private readonly TripRepository _tripRepository;
+
     public FindTripCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
@@ -42,7 +43,9 @@ public class FindTripCommand : ICommand
             return;
         }
 
-        Console.WriteLine($"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}");
+        Console.WriteLine(
+            $"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}"
+        );
         if (trip.Notes.Any())
         {
             Console.WriteLine($"\tNotes: {string.Join("; ", trip.Notes)}");
@@ -53,12 +56,18 @@ public class FindTripCommand : ICommand
             for (int i = 0; i < trip.Locations.Count; i++)
             {
                 Location location = trip.Locations[i];
-                if (i > 0) Console.Write("=>");
-                Console.Write($" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
+                if (i > 0)
+                {
+                    Console.Write("=>");
+                }
+                Console.Write(
+                    $" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]"
+                );
             }
             Console.WriteLine();
         }
     }
+
     public Trip FindTrip(int id)
     {
         return _tripRepository.FindById(id);
@@ -68,5 +77,4 @@ public class FindTripCommand : ICommand
     {
         return _tripRepository.FindByTitle(title);
     }
-
 }

@@ -9,6 +9,7 @@ namespace TravelJournal.Commands;
 public class FindTripByCountryCommand : ICommand
 {
     private readonly TripRepository _tripRepository;
+
     public FindTripByCountryCommand(TripRepository service) => _tripRepository = service;
 
     public void Execute(string[] args)
@@ -27,10 +28,11 @@ public class FindTripByCountryCommand : ICommand
             return;
         }
 
-
         foreach (Trip trip in trips)
         {
-            Console.WriteLine($"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}");
+            Console.WriteLine(
+                $"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}"
+            );
             if (trip.Notes.Any())
             {
                 Console.WriteLine($"\tNotes: {string.Join("; ", trip.Notes)}");
@@ -41,8 +43,13 @@ public class FindTripByCountryCommand : ICommand
                 for (int i = 0; i < trip.Locations.Count; i++)
                 {
                     Location location = trip.Locations[i];
-                    if (i > 0) Console.Write("=>");
-                    Console.Write($" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
+                    if (i > 0)
+                    {
+                        Console.Write("=>");
+                    }
+                    Console.Write(
+                        $" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]"
+                    );
                 }
                 Console.WriteLine();
             }
@@ -53,6 +60,4 @@ public class FindTripByCountryCommand : ICommand
     {
         return _tripRepository.FindByCountry(country);
     }
-
-
 }

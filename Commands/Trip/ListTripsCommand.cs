@@ -34,7 +34,9 @@ public class ListTripsCommand : ICommand
 
         foreach (Trip trip in trips)
         {
-            Console.WriteLine($"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}");
+            Console.WriteLine(
+                $"[{trip.Id}] {trip.Title} | {trip.TripStart:yyyy-MM-dd} - {trip.TripFinish:yyyy-MM-dd} | {trip.State}"
+            );
             if (trip.Notes.Any())
             {
                 Console.WriteLine($"\tNotes: {string.Join("; ", trip.Notes)}");
@@ -45,13 +47,19 @@ public class ListTripsCommand : ICommand
                 for (int i = 0; i < trip.Locations.Count; i++)
                 {
                     Location location = trip.Locations[i];
-                    if (i > 0) Console.Write("=>");
-                    Console.Write($" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]");
+                    if (i > 0)
+                    {
+                        Console.Write("=>");
+                    }
+                    Console.Write(
+                        $" [{location.Country} | {location.City} | {location.VisitDate:yyyy-MM-dd}]"
+                    );
                 }
                 Console.WriteLine();
             }
         }
     }
+
     public List<Trip> GetAllTrips()
     {
         return _tripRepository.FindAll();
@@ -61,5 +69,4 @@ public class ListTripsCommand : ICommand
     {
         return _tripRepository.FindAllDetail();
     }
-
 }
